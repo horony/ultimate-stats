@@ -1,0 +1,129 @@
+event_id,competition_id,placement,team,no_games,no_wins,no_losses,no_draws,score_for,score_against,spirit_rating,is_spirit_winner,is_qualification_placement,qualification_event_name,qualification_event_id,is_demotion_placement,demotion_event_name,demotion_event_id,gender_division,age_division,competition_division,source_url
+wucc_2018,wucc,1,Revolver,10,10,0,0,150,82,11.60,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,2,Colony,10,8,2,0,141,107,11.70,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,3,GOAT,9,8,1,0,130,76,10.56,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,3,Doublewide,9,8,1,0,129,75,10.56,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,5,Ring of Fire,10,9,1,0,143,83,10.78,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,6,Nomadic Tribe,11,7,4,0,141,121,10.00,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,7,Tchac,10,6,4,0,125,127,11.20,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,7,Bad Skid,9,6,3,0,111,110,9.56,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,9,CUSB,10,8,2,0,136,94,9.78,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,10,Clapham,11,7,4,0,145,116,10.20,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,11,Freespeed,10,5,5,0,135,126,10.80,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,11,Euforia,10,5,5,0,113,124,9.50,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,13,Chevron Action Flash,10,4,6,0,119,126,9.22,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,13,General Strike,9,6,3,0,124,108,10.00,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,15,Wildcats,10,4,6,0,124,143,11.8,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,16,Comunidad El Oso,10,5,5,0,127,120,10.30,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,17,Flying Angels Bern,9,6,3,0,120,109,11.0,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,17,Ragnarok,9,6,3,0,120,112,10.33,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,19,Relámpagos,9,4,5,0,105,125,11.11,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,19,Juggernaut,9,4,5,0,117,114,11.22,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,21,FWD>>,9,4,5,0,112,117,11.22,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,21,Ranelagh,9,4,5,0,104,119,12.22,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,23,Warao,9,2,7,0,99,124,9.67,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,23,Hot Chilly,9,4,5,0,112,113,10.67,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,25,Family Ultimate,10,6,4,0,117,122,8.67,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,26,Chuchai,10,4,6,0,114,123,11.0,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,27,OTSO,10,5,5,0,128,125,10.0,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,28,PELT Ultimate,11,5,6,0,136,136,10.9,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,29,Heat Haze,10,6,4,0,116,116,11.56,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,30,Crackerjacks,10,5,5,0,128,119,11.56,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,31,Freezzz Beezzz,10,3,7,0,106,137,10.22,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,32,Devon Ultimate,10,3,7,0,106,129,11.22,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,33,Iznogood,10,4,6,0,127,128,10.40,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,33,Mooncatchers,9,3,6,0,103,125,10.44,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,35,Sokol,10,1,9,0,71,145,10.00,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,35,Long Donkeys,10,2,8,0,108,137,13.40,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,37,thebigEZ,10,2,8,0,106,140,11.40,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,37,Fenix Ultimate,10,1,9,0,93,142,11.60,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,39,Örebro Frisbee,10,3,7,0,114,133,10.80,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,39,Daione Kumay,10,2,8,0,114,141,11.50,,,,,,,,open,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,5,Mixtape,9,8,1,0,132,71,11.78,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,3,AMP,9,8,1,0,127,67,11.56,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,1,BFG,10,10,0,0,149,73,11.40,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,11,Anchor,9,6,3,0,128,108,10.78,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,7,GRUT,10,5,5,0,136,114,10.50,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,5,Crash,9,8,1,0,130,104,11.22,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,13,Friskee,9,6,3,0,117,106,10.44,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,13,Cafe de Luida,9,6,3,0,118,102,11.00,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,2,Slow White,10,9,1,0,142,88,10.80,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,7,Hässliche Erdferkel,9,7,2,0,124,97,11.11,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,41,Freakshow,9,3,6,0,110,101,11.22,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,3,Wild Card,9,8,1,0,129,90,11.00,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,15,Marvellous DC,9,4,5,0,117,110,12.78,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,9,Pie Wagon,9,7,2,0,124,107,11.56,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,17,Banana Cutters,9,6,3,0,122,99,9.44,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,22,Battleship,10,5,5,0,122,110,8.56,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,21,SMOG,11,6,5,0,134,133,10.60,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,19,Uro Soul,10,5,5,0,123,117,7.80,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,23,Sesquidistus,10,5,5,0,127,127,11.80,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,17,Reading Ultimate,9,7,2,0,126,103,11.56,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,23,Shinshu Loose,10,5,5,0,119,132,11.00,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,9,Voltaje,9,6,3,0,115,106,8.44,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,12,Black Eagles,9,6,3,0,130,106,9.33,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,15,Colorado,9,4,5,0,112,109,11.22,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,30,Macondo,11,5,6,0,122,142,9.40,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,26,Sugar Mix,11,5,6,0,119,140,11.40,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,35,BOOM!,9,3,6,0,96,117,10.56,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,19,Mulatto Pilipinas,9,6,3,0,128,114,9.56,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,47,Flying Rabbits Ultimate Club,9,0,9,0,66,131,13.44,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,29,Vanguard,10,5,5,0,127,126,12.33,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,31,IKU,9,2,7,0,109,120,11.44,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,28,Mubidisk,10,3,7,0,123,129,8.78,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,35,Cóndor Ultimate,9,3,6,0,96,124,9.33,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,45,Stall7,9,1,8,0,82,131,10.78,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,37,Flying Tigers,9,3,6,0,91,119,11.33,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,33,NEON,9,4,5,0,99,121,11.22,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,25,RusMixed,10,6,4,0,112,117,10.11,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,31,Glasgow Ultimate,9,3,6,0,118,114,9.78,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,45,Panthers Bern,9,1,8,0,73,132,11.11,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,43,Black Sheep,9,3,6,0,101,122,12.89,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,47,Yanomami,9,0,9,0,72,133,9.56,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,41,Disctèrics,9,4,5,0,92,113,10.00,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,43,Wizards,9,2,7,0,84,120,10.33,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,27,Chuckies,11,4,7,0,129,131,11.20,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,39,Argentina Ultimate Club,9,2,7,0,93,122,10.67,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,39,Kisumu Frisbee Club,9,3,6,0,102,121,10.44,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,33,Disco Sour,9,4,5,0,107,108,10.89,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,37,Charrúa,9,3,6,0,96,123,10.33,,,,,,,,mixed,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,5,Fury,9,7,2,0,127,83,10.33,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,3,Brute Squad,9,8,1,0,127,84,9.78,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,3,Molly Brown,9,7,2,0,125,72,10.67,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,7,Ozone,9,7,2,0,121,87,10.44,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,2,Revolution,10,9,1,0,140,81,11.30,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,7,HUCK,9,6,3,0,115,101,10.56,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,1,Riot,10,10,0,0,148,60,10.50,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,5,6ixers,9,7,2,0,122,93,11.33,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,17,UNO,9,5,4,0,122,109,10.22,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,14,Iris,11,6,5,0,131,113,10.60,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,15,Traffic,10,5,5,0,130,110,9.30,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,12,Atletico,11,5,6,0,127,132,10.30,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,21,CUSB Shout,9,5,4,0,118,93,9.00,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,9,Ellipsis,10,7,3,0,139,108,10.60,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,17,YAKA,9,5,4,0,112,114,10.44,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,16,Iceni,10,4,6,0,115,139,10.90,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,27,Troubles,11,6,5,0,136,130,9.70,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,23,FABulous,9,3,6,0,94,122,10.33,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,28,SYC,10,4,6,0,110,123,10.44,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,9,MUD,10,7,3,0,130,98,10.20,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,21,Mantis,9,4,5,0,99,113,11.33,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,33,Helsinki Ultimate,9,3,6,0,87,120,10.67,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,19,Fusion,9,5,4,0,104,115,10.89,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,13,Swampybarg,11,7,4,0,135,110,10.40,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,29,Seagulls,10,5,5,0,114,115,10.67,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,11,Brilliance,11,7,4,0,149,117,8.40,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,37,Orebro Frisbee,10,1,9,0,62,147,10.90,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,39,Rampage,10,1,9,0,70,147,12.00,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,37,ChCh Chicks,10,2,8,0,93,134,12.20,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,23,AeroSoul,9,3,6,0,95,121,8.33,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,35,Kaos,9,2,7,0,92,126,12.11,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,30,Mainzelmädchen,10,3,7,0,113,128,11.67,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,32,Malafama,11,3,8,0,110,145,10.40,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,25,Bamboo,11,7,4,0,142,121,9.70,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,19,ZUF,9,4,5,0,92,120,10.00,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,33,Nice Bristols,9,3,6,0,108,113,11.22,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,31,Gentleladies,10,4,6,0,94,114,10.44,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,39,Sirens,10,0,10,0,80,147,10.20,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,26,HAVOC,11,6,5,0,127,127,10.90,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
+wucc_2018,wucc,35,Daione Kumay,9,2,7,0,100,123,9.89,,,,,,,,women,regular,club,https://ultipedia.fandom.com/wiki/WUCC_2018
