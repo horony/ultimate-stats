@@ -1,3 +1,24 @@
+##########################
+# general control tables #
+##########################
+
+DROP TABLE IF EXISTS xa7580_db2.ct_matchup_params;
+
+CREATE TABLE IF NOT EXISTS xa7580_db2.ct_matchup_params (
+
+	version_nr SMALLINT(1) 
+	, version_name VARCHAR(36)
+	, treshold_close_match DECIMAL(2,2) comment "treshold value for goal difference making it a close match (e.g. factor 1.15 equals 15-13)" 
+	, treshold_contested_match DECIMAL(2,2) comment "treshold value for goal difference making it a contested match (e.g. factor 1.36 equals 15-11)"
+	, treshold_clear_match DECIMAL(2,2) comment "treshold value for blowout difference making it a clear match (e.g. factor 2.14 equals 15-7)"
+	, treshold_blowout_match DECIMAL(2,2) comment "treshold value for blowout difference making it a blowout match (e.g. factor 5.0 equals 15-3)"
+
+)
+
+COMMENT "Control table to adjust threshold value which define what matches are considered close, blowout etc."
+;
+
+
 ###########################
 # general dimensiontables #
 ###########################
@@ -210,10 +231,10 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.d_teams (
 COMMENT "Main dimension table listing all teams (e.g. Boston Ironside, FruBB)"
 ;
 
-###########################################
-# hierarchy ultimate events:              #
-# 1. comepetition -> 2. event -> 3. round #
-###########################################
+########################################################
+# hierarchy ultimate events:              			   #
+# 1. comepetition -> 2. event -> 3. round -> 4. fields #
+########################################################
 
 # 1. competitions
 
@@ -399,6 +420,40 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.d_rounds (
 COMMENT "Listing rounds within competitions. Normal tournament like WUCC only has one round. German Nationals have 2 rounds."
 ;
 
+# 3. rounds
+
+DROP TABLE IF EXISTS xa7580_db2.d_fields;
+
+CREATE TABLE IF NOT EXISTS xa7580_db2.d_fields (
+	
+	field_id VARCHAR(128) PRIMARY KEY 
+	, round_id VARCHAR(30) 
+	, location_id BIGINT(20)
+
+	, name VARCHAR(256) 
+	, name_display VARCHAR(256) 
+	, name_short VARCHAR(10)
+
+	, surface VARCHAR(36) comment "e.g. beach, grass, turf"
+	, state VARCHAR(36) comment "e.g. bad condition etc"
+	, alignment VARCHAR(36) comment "e.g. alignment of field can indicate upwind/downwind games"
+	, field_coords POINT
+
+	, notes VARCHAR(500)
+	, image VARCHAR(500)
+
+	, remarks VARCHAR(500)
+	, update_ts DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+	, insert_ts DATETIME DEFAULT CURRENT_TIMESTAMP 
+
+    , FOREIGN KEY (round_id) REFERENCES d_rounds(round_id)
+    , FOREIGN KEY (location_id) REFERENCES d_locations(location_id)
+
+)
+
+COMMENT "Listing fields a round is played on."
+;
+
 #######################
 # fact tables 		  #    
 # - matches           #
@@ -421,14 +476,14 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.f_matches (
 	, start_dt DATE 
 	, start_ts DATETIME
 	, location_id BIGINT(20) DEFAULT 1
-	, field VARCHAR(16)
-	, field_surface VARCHAR(16)
-	, field_condition VARCHAR(16)
+	, location_name VARCHAR(256)
+	, field_id VARCHAR(128)
 
-	, is_title_match SMALLINT(1)
-	, is_placement_match SMALLINT(1)
-	, is_elemination_match SMALLINT(1)
-	, is_pool_game SMALLINT(1)
+	, is_title_match SMALLINT(1) DEFAULT 0
+	, is_placement_match SMALLINT(1) DEFAULT 0
+	, is_elemination_match SMALLINT(1) DEFAULT 0
+	, is_pool_match SMALLINT(1) DEFAULT 0
+	, comp_placement SMALLINT(1) DEFAULT 1 comment "maximum placement teams in match are competing for"	
 	, match_type VARCHAR(36) comment "e.g. pool, powerpool, elimination, placement, final, "	
 	, match_name VARCHAR(36) comment "e.g. Pool A, Bracket 1-8, P5-Match"	
 
@@ -447,9 +502,10 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.f_matches (
 	, winner_team_id BIGINT(20)
 	, looser_team_id BIGINT(20)
 	, point_diff INTEGER(2)
-	, is_close_game SMALLINT(1)
+	, point_diff_factor DECIMAL(2,2)
 	, is_universe_game SMALLINT(1)
-	, is_blowout_game SMALLINT(1)
+	#, is_blowout_game SMALLINT(1)
+	#, is_close_game SMALLINT(1)
 
 	, has_observer SMALLINT(1) DEFAULT NULL
 	, has_referee SMALLINT(1) DEFAULT 0
@@ -498,6 +554,8 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.f_matches (
     , FOREIGN KEY (home_team_id) REFERENCES d_teams(team_id)
     , FOREIGN KEY (away_team_id) REFERENCES d_teams(team_id)
     , FOREIGN KEY (location_id) REFERENCES d_locations(location_id)	
+    , FOREIGN KEY (field_id) REFERENCES d_fields(field_id)	
+
 )
 
 COMMENT "Fact table containing all ultimate matches"
