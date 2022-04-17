@@ -8,10 +8,10 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.ct_matchup_params (
 
 	version_nr SMALLINT(1) 
 	, version_name VARCHAR(36)
-	, treshold_close_match DECIMAL(2,2) comment "treshold value for goal difference making it a close match (e.g. factor 1.15 equals 15-13)" 
-	, treshold_contested_match DECIMAL(2,2) comment "treshold value for goal difference making it a contested match (e.g. factor 1.36 equals 15-11)"
-	, treshold_clear_match DECIMAL(2,2) comment "treshold value for blowout difference making it a clear match (e.g. factor 2.14 equals 15-7)"
-	, treshold_blowout_match DECIMAL(2,2) comment "treshold value for blowout difference making it a blowout match (e.g. factor 5.0 equals 15-3)"
+	, treshold_close_match DECIMAL(5,2) comment "treshold value for goal difference making it a close match (e.g. factor 1.15 equals 15-13)" 
+	, treshold_contested_match DECIMAL(5,2) comment "treshold value for goal difference making it a contested match (e.g. factor 1.36 equals 15-11)"
+	, treshold_clear_match DECIMAL(5,2) comment "treshold value for blowout difference making it a clear match (e.g. factor 2.14 equals 15-7)"
+	, treshold_blowout_match DECIMAL(5,2) comment "treshold value for blowout difference making it a blowout match (e.g. factor 5.0 equals 15-3)"
 
 )
 
@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS xa7580_db2.d_locations;
 
 CREATE TABLE IF NOT EXISTS xa7580_db2.d_locations (
 
-	location_id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY 
+	location_id VARCHAR(128) PRIMARY KEY DEFAULT 'AAA'
 	
 	, name VARCHAR(256)
 	, name_display VARCHAR(256) 
@@ -305,7 +305,7 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.d_events (
 	, event_year INTEGER(4)	
 	, event_start_dt DATE
 	, event_end_dt DATE
-	, event_location_id BIGINT(20) DEFAULT 1
+	, event_location_id  VARCHAR(128) DEFAULT 'AAA'
 	, event_qualification VARCHAR(36) comment "e.g. qualification_needed, open_entry, etc."	
 	, event_rounds INTEGER(4) NOT NULL DEFAULT 1 
 	, event_status VARCHAR(36) comment "e.g. finished, planned, ongoing"	
@@ -381,7 +381,7 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.d_rounds (
 	, round_year INTEGER(4)	
 	, round_start_dt DATE
 	, round_end_dt DATE
-	, round_location_id BIGINT(20) DEFAULT 1
+	, round_location_id VARCHAR(128) DEFAULT 'AAA'
 	, round_qualification VARCHAR(36) comment "e.g. qualification_needed, open_entry, etc."	
 	, round_rounds INTEGER(4) NOT NULL DEFAULT 1 
 	, round_status VARCHAR(36) comment "e.g. finished, planned, ongoing"	
@@ -428,7 +428,7 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.d_fields (
 	
 	field_id VARCHAR(128) PRIMARY KEY 
 	, round_id VARCHAR(30) 
-	, location_id BIGINT(20)
+	, location_id VARCHAR(128) DEFAULT 'AAA'
 
 	, name VARCHAR(256) 
 	, name_display VARCHAR(256) 
@@ -475,8 +475,8 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.f_matches (
 	, start_year INTEGER(4)
 	, start_dt DATE 
 	, start_ts DATETIME
-	, location_id BIGINT(20) DEFAULT 1
-	, location_name VARCHAR(256)
+	, location_id VARCHAR(128) DEFAULT 'AAA'
+	#, location_name VARCHAR(256)
 	, field_id VARCHAR(128)
 
 	, is_title_match SMALLINT(1) DEFAULT 0
@@ -490,19 +490,19 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.f_matches (
 	, home_team_id BIGINT(20) NOT NULL 
 	, home_team_id_str VARCHAR(256) 	
 	, home_team_score INTEGER(2)
-	, home_team_spirit DECIMAL(2,2)
+	, home_team_spirit INTEGER(2)
 	, home_team_point_diff INTEGER(2)
 
 	, away_team_id BIGINT(20) NOT NULL 
 	, away_team_id_str VARCHAR(256)
 	, away_team_score INTEGER(2)
-	, away_team_spirit DECIMAL(2,2)
+	, away_team_spirit INTEGER(2)
 	, away_team_point_diff INTEGER(2)
 
 	, winner_team_id BIGINT(20)
 	, looser_team_id BIGINT(20)
 	, point_diff INTEGER(2)
-	, point_diff_factor DECIMAL(2,2)
+	, point_diff_factor DECIMAL(5,2)
 	, is_universe_game SMALLINT(1)
 	#, is_blowout_game SMALLINT(1)
 	#, is_close_game SMALLINT(1)
@@ -525,11 +525,11 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.f_matches (
 	, notes VARCHAR(500)
 
 	, has_weather_data SMALLINT(1) NOT NULL DEFAULT 0	
-	, weather_temp DECIMAL(2,1)
-	, weather_rain DECIMAL(3,1)
-	, weather_sun DECIMAL(2,1)
-	, weather_wind DECIMAL(3,1)
-	, weather_gusts DECIMAL(3,1)
+	, weather_temp DECIMAL(5,2)
+	, weather_rain DECIMAL(5,2)
+	, weather_sun DECIMAL(5,2)
+	, weather_wind DECIMAL(5,2)
+	, weather_gusts DECIMAL(5,2)
 	, weather_icon VARCHAR(256)
 	, weather_source VARCHAR(256)
 
@@ -583,7 +583,7 @@ CREATE TABLE IF NOT EXISTS xa7580_db2.f_results (
 	, score_against INTEGER(4)
 	, score_diff INTEGER(4)
 
-	, spirit_rating DECIMAL(2,1)
+	, spirit_rating DECIMAL(6,3)
 	, spirit_placement INTEGER(2)
 	, is_spirit_winner SMALLINT(1)
 

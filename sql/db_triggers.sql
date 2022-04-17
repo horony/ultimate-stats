@@ -196,18 +196,19 @@ END$$
 
 DELIMITER ;
 
-# location_name
+# location_id
 
-DROP TRIGGER IF EXISTS f_matches_insert_location_name;
+
+DROP TRIGGER IF EXISTS f_matches_insert_location_id;
 
 DELIMITER $$
 
-CREATE TRIGGER f_matches_insert_location_name BEFORE INSERT ON f_matches FOR EACH ROW
+CREATE TRIGGER f_matches_insert_location_id BEFORE INSERT ON f_matches FOR EACH ROW
 BEGIN
 
-IF NOT EXISTS (SELECT 1 FROM f_matches WHERE location_name = NEW.location_name) THEN
-    INSERT IGNORE INTO d_locations (location_name)
-    VALUES (NEW.location_name);
+IF NOT EXISTS (SELECT 1 FROM f_matches WHERE location_id = NEW.location_id) THEN
+    INSERT IGNORE INTO d_locations (location_id)
+    VALUES (NEW.location_id);
 END IF;
 
 END$$
@@ -215,16 +216,16 @@ END$$
 DELIMITER ;
 
 
-DROP TRIGGER IF EXISTS f_matches_update_location_name;
+DROP TRIGGER IF EXISTS f_matches_update_location_id;
 
 DELIMITER $$
 
-CREATE TRIGGER f_matches_update_location_name BEFORE UPDATE ON f_matches FOR EACH ROW
+CREATE TRIGGER f_matches_update_location_id BEFORE UPDATE ON f_matches FOR EACH ROW
 BEGIN
 
-IF NOT EXISTS (SELECT 1 FROM f_matches WHERE location_name = NEW.location_name) THEN
-    INSERT IGNORE INTO d_locations (location_name)
-    VALUES (NEW.location_name);
+IF NOT EXISTS (SELECT 1 FROM f_matches WHERE location_id = NEW.location_id) THEN
+    INSERT IGNORE INTO d_locations (location_id)
+    VALUES (NEW.location_id);
 END IF;
 
 END$$

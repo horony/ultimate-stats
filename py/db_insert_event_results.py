@@ -52,11 +52,12 @@ def DBinsertResult(df, col):
                     con.execute('''
                                 INSERT INTO d_teams (team_id_str)
                                 SELECT team_id_str FROM tmp_team_ids
-                                WHERE tmp_team_ids.team_id_str not in (SELECT DISTINCT COALESCE(team_id_str,0) FROM d_teams);
-                                ''')   
+                                WHERE tmp_team_ids.team_id_str not in (SELECT DISTINCT COALESCE(team_id_str,0) FROM d_teams)
+                                ;''')   
                     print('Insert into d_teams complete')
-                    con.execute('DROP TABLE tmp_team_ids;')    
-                    print('Dropped tmp_team_ids')
+                
+                    #con.execute('DROP TABLE tmp_team_ids;')    
+                    #print('Dropped tmp_team_ids')
     
                 db_message = "Success inserting new " + str(cnt) + " IDs into table d_teams!"
              
@@ -123,7 +124,7 @@ def DBinsertResult(df, col):
                              ;
                          ''')      
 
-                con.execute('DROP TABLE tmp_results;')    
+                #con.execute('DROP TABLE tmp_results;')    
      
                 db_message = "Success updating table f_results!"
      

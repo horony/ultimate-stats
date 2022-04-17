@@ -9,6 +9,7 @@ Created on Sun Apr 3 19:54:45 2022
 from bs4 import BeautifulSoup
 import requests
 from datetime import datetime, timedelta
+import time
 import pandas as pd
 import re
 import sys 
@@ -70,12 +71,14 @@ def buildDateTime(date, time):
 
 # import the custom database function
 from db_insert_event_results import DBinsertResult
+from db_insert_match import DBinsertMatch
 
 # import dictionary with website plus metainfo that are going to be scraped
 from scrp_uc_input_data import event_dict
 
 # interate over dictionary
 for d, di in event_dict.items():
+    time.sleep(30)
     print('\n Current dict:', d)
     
     if (di['load_now'] == 1):
@@ -145,8 +148,8 @@ for d, di in event_dict.items():
         print(df_results.head(3))
         print('Found', len(df_results.index), 'results')
         
+        # insert results data into database
         DBinsertResult(df_results, 'team_id_str')
-        #unique_teams =  df_results['team_id_str']
                   
         """
         SCRAPING MATCHUPS
@@ -158,6 +161,7 @@ for d, di in event_dict.items():
         # intitialize target dataframe        
         df_matchups = pd.DataFrame(columns=[
                                       'round_no'
+                                    , 'round_id'
                                     , 'event_id'
                                     , 'competition_id'
                                     , 'start_year'
@@ -175,8 +179,10 @@ for d, di in event_dict.items():
                                     , 'is_universe_game'
                                     , 'is_draw'
                                     , 'has_spirit_scores'
+                                    , 'location_id'
                                     , 'location_name'
                                     , 'field_id'
+                                    , 'field_name'
                                     , 'gender_division'
                                     , 'age_division'
                                     , 'competition_division'
@@ -190,19 +196,13 @@ for d, di in event_dict.items():
 
         while current_page != 0:
             
-            url = page_to_scrape + str(current_page)
-            print(url)
-            
+            url = page_to_scrape + str(current_page)            
             print('Scraping page', str(current_page))
             
             #header = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-            
             r  = requests.get(url)
-            print(r)
             data = r.text
-            #print(data)
             soup = BeautifulSoup(data, 'html.parser')
-            #print(soup)
             
             # check if final page ist found
             active_nav_site = soup.find("ul", {"class": "nav-pager align-left"})
@@ -244,20 +244,20 @@ for d, di in event_dict.items():
                     try:
                         matchup_location = matchup_datetime_and_place[1].find("a", {"class": "plain-link"}).getText()
                     except:
-                        matchup_location = None
                         location_name = None
+                        location_id = None
                     else:
-                        matchup_location = matchup_datetime_and_place[1].find("a", {"class": "plain-link"}).getText()
-                        location_name = buildIdentifierLocation(matchup_location)
+                        location_name = matchup_datetime_and_place[1].find("a", {"class": "plain-link"}).getText()
+                        location_id = buildIdentifierLocation(location_name)
                     
                     try:
                         matchup_field = getParentText(matchup_datetime_and_place[1].find("span", {"class": "push-left"}))
                     except:
-                        matchup_field = None
+                        field_name = None
                         field_id = None
                     else:
-                        matchup_field = getParentText(matchup_datetime_and_place[1].find("span", {"class": "push-left"}))
-                        field_id = di['event'] + '_r' +  str(di['round_no']) + '_' + location_name + '_' + buildIdentifierLocation(matchup_field)
+                        field_name = getParentText(matchup_datetime_and_place[1].find("span", {"class": "push-left"}))
+                        field_id = di['event'] + '_r' +  str(di['round_no']) + '_' + location_id + '_' + buildIdentifierLocation(field_name)
                                 
                     # get teams of current matchup
                     
@@ -304,15 +304,18 @@ for d, di in event_dict.items():
                         away_team_spirit = int(spirits[1].text.strip())
                     
                     current_matchup_data = [[start_year
-                                             , start_dt, start_ts
+                                             , start_dt
+                                             , start_ts
                                              , home_team_id_str
                                              , home_team_score
                                              , home_team_spirit
                                              , away_team_id_str
                                              , away_team_score
                                              , away_team_spirit
+                                             , location_id
                                              , location_name
                                              , field_id
+                                             , field_name
                                              ]]
                     
                     df_current_matchup = pd.DataFrame(current_matchup_data, columns=['start_year'
@@ -324,8 +327,10 @@ for d, di in event_dict.items():
                                                                                       , 'away_team_id_str'
                                                                                       , 'away_team_score'
                                                                                       , 'away_team_spirit'
+                                                                                      , 'location_id'
                                                                                       , 'location_name'
                                                                                       , 'field_id'
+                                                                                      , 'field_name'
                                                                                       ])
                     
                     df_matchups = pd.concat([df_matchups, df_current_matchup], sort=True)       
@@ -341,7 +346,8 @@ for d, di in event_dict.items():
         df_matchups['home_team_point_diff'] = df_matchups['home_team_score'] - df_matchups['away_team_score']
         df_matchups['away_team_point_diff'] = df_matchups['away_team_score'] - df_matchups['home_team_score']
         df_matchups['point_diff'] = abs(df_matchups['home_team_point_diff'])
-        df_matchups['point_diff_factor'] = np.where(df_matchups["home_team_score"] > df_matchups["away_team_score"], df_matchups["home_team_score"], df_matchups["away_team_score"]) / np.where(df_matchups["home_team_score"] < df_matchups["away_team_score"], df_matchups["home_team_score"], df_matchups["away_team_score"])
+        #df_matchups['point_diff_factor'] = np.where(df_matchups["home_team_score"] > df_matchups["away_team_score"], df_matchups["home_team_score"], df_matchups["away_team_score"]) / np.where(df_matchups["home_team_score"] < df_matchups["away_team_score"], df_matchups["home_team_score"], df_matchups["away_team_score"])
+        df_matchups['point_diff_factor'] =  None
         
         # was it a universe points point?
         df_matchups.loc[(df_matchups['point_diff'] == 1) & ((df_matchups['home_team_score'] + df_matchups['away_team_score']) == 29), 'is_universe_game'] = 1
@@ -356,6 +362,7 @@ for d, di in event_dict.items():
         
         # assign constant column values
         df_matchups = df_matchups.assign(   round_no = di['round_no']
+                                            , round_id =  di['event'] + '_r' + str(di['round_no'])
                                             , event_id = di['event']
                                             , competition_id = di['competition']
                                             , gender_division = di['gender_division']
@@ -368,6 +375,12 @@ for d, di in event_dict.items():
         
         print(df_matchups.head(3))
         print('Found', len(df_matchups.index), 'matches')
+        
+        #insert locations
+        #insert fields
+        #insert matches
+        #update results
+        DBinsertMatch(df_matchups, 'location_id', 'location_name', 'field_id', 'field_name')
         
     else:
         print('No scraping command for this dict found')
