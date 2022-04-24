@@ -212,7 +212,7 @@ def DBinsertMatch(df, col_location_id, col_location_name, col_field_id, col_fiel
                                             WHEN tmp.home_team_score > tmp.away_team_score THEN ta.team_id 
                                             ELSE NULL END                                    	
                                     , tmp.point_diff 
-                                    	, tmp.point_diff_factor ### needs to be caluclated here ###
+                                    	, greatest(tmp.home_team_score, tmp.away_team_score) / least(tmp.home_team_score, tmp.away_team_score)
                                     	, tmp.is_universe_game 
                                     	, tmp.is_draw 
                                     	, tmp.has_spirit_scores 
@@ -243,125 +243,74 @@ def DBinsertMatch(df, col_location_id, col_location_name, col_field_id, col_fiel
     print(db_message)  
     
     """
-    UNDER CONSTRUCTION
     Update the f_results with f_matches
-    CREATE A VIEW FOR SPIRIT RANKING
-    SELECT 	r.event_id
-		, r.team_id
-		, r.team_id_str
-        , count(*) as no_games
-        , sum(case when m.winner_team_id = r.team_id then 1 else 0 end) as no_wins
-        , sum(case when m.looser_team_id = r.team_id then 1 else 0 end) as no_losses
-        , sum(m.is_draw) as no_draws
-        , sum(case when r.team_id = m.home_team_id then m.home_team_score else m.away_team_score end) as score_for
-        , sum(case when r.team_id != m.home_team_id then m.home_team_score else m.away_team_score end) as score_against
-        , sum(case when r.team_id = m.home_team_id then m.home_team_point_diff else m.away_team_point_diff end) as score_diff
-        , round(avg(case when r.team_id = m.home_team_id then m.home_team_spirit else m.away_team_spirit end),3) as spirit_rating
-        
-        FROM `f_results` r
-        LEFT JOIN f_matches m
-        	ON 	m.event_id = r.event_id
-            	AND (r.team_id = m.away_team_id or r.team_id = m.home_team_id)
-
-    WHERE r.event_id = 'xeucf_2021'
-    GROUP BY r.event_id, r.team_id, r.team_id_str;
+    
+    """
     
     print('... updating f_results with f_matches')
     
     try:
         engine = create_engine(engine_input, echo=False) 
-        df.to_sql(name='tmp_matches', con=engine, index=False, if_exists='replace')
     
         with engine.connect() as con:
             con.execute('''
-                            INSERT INTO f_matches
-                                 (  round_no 
-                                    , round_id  
-                                    	, event_id 
-                                    	, competition_id 
-                                    	, start_year 
-                                    	, start_dt 
-                                    	, start_ts 
-                                    	, location_id 
-                                    	, field_id
-                                    	, home_team_id
-                                    	, home_team_id_str 
-                                    	, home_team_score 
-                                    	, home_team_spirit 
-                                    	, home_team_point_diff
-                                    	, away_team_id 
-                                    	, away_team_id_str
-                                    	, away_team_score 
-                                    	, away_team_spirit 
-                                    	, away_team_point_diff 
-                                    	, winner_team_id 
-                                    	, looser_team_id 
-                                    	, point_diff 
-                                    	, point_diff_factor 
-                                    	, is_universe_game 
-                                    	, is_draw 
-                                    	, has_spirit_scores 
-                                    	, gender_division 
-                                    	, age_division 
-                                    	, competition_division 
-                                    , source_file   
-                                    , source_name 
-                                    	, source_url 
-                                  )
-                                 
-                             SELECT tmp.round_no 
-                                    , tmp.round_id
-                                    	, tmp.event_id 
-                                    	, tmp.competition_id 
-                                    	, tmp.start_year 
-                                    	, tmp.start_dt 
-                                    	, tmp.start_ts 
-                                    	, tmp.location_id 
-                                    	, tmp.field_id
-                                    , th.team_id
-                                    	, tmp.home_team_id_str 
-                                    	, tmp.home_team_score 
-                                    	, tmp.home_team_spirit 
-                                    	, tmp.home_team_point_diff
-                                    , ta.team_id
-                                    	, tmp.away_team_id_str
-                                    	, tmp.away_team_score 
-                                    	, tmp.away_team_spirit 
-                                    	, tmp.away_team_point_diff 
-                                    	, CASE  WHEN tmp.home_team_score > tmp.away_team_score THEN th.team_id 
-                                            WHEN tmp.home_team_score < tmp.away_team_score THEN ta.team_id 
-                                            ELSE NULL END
-                                    	, CASE  WHEN tmp.home_team_score < tmp.away_team_score THEN th.team_id 
-                                            WHEN tmp.home_team_score > tmp.away_team_score THEN ta.team_id 
-                                            ELSE NULL END                                    	
-                                    , tmp.point_diff 
-                                    	, tmp.point_diff_factor 
-                                    	, tmp.is_universe_game 
-                                    	, tmp.is_draw 
-                                    	, tmp.has_spirit_scores 
-                                    	, tmp.gender_division 
-                                    	, tmp.age_division 
-                                    	, tmp.competition_division 	
-                                    , tmp.source_file
-                                    	, tmp.source_name 
-                                    	, tmp.source_url 
-                                     
-                             FROM tmp_matches tmp
-                             
-                             LEFT JOIN d_teams th
-                                 ON th.team_id_str = tmp.home_team_id_str
-                                 
-                             LEFT JOIN d_teams ta
-                                 ON ta.team_id_str = tmp.away_team_id_str                                 
-                             ;
-                    ''')      
+                            UPDATE f_results f
+
+                            LEFT JOIN (
+                            select  rd.team_id
+                                    	, rd.event_id
+                                    	, rd.competition_division
+                                    	, rd.age_division
+                                    	, rd.gender_division
+                                    	, rd.no_games
+                                    	, rd.no_wins
+                                    	, rd.no_losses
+                                    	, rd.no_draws
+                                    	, rd.score_for
+                                    	, rd.score_against
+                                    	, rd.score_diff
+                                    	, rd.spirit_rating
+                                    , @curRank := @curRank + 1 AS spirit_rank
+                                    
+                            FROM    f_results_data_v rd, (SELECT @curRank := 0) r
+                            
+                            WHERE   rd.event_id = (SELECT event_id FROM tmp_matches LIMIT 1)
+                                    AND rd.gender_division = (SELECT gender_division FROM tmp_matches LIMIT 1)
+                                    AND rd.age_division = (SELECT age_division FROM tmp_matches LIMIT 1)
+                                    AND rd.competition_division = (SELECT competition_division FROM tmp_matches LIMIT 1)
+                                    
+                            ORDER BY spirit_rating desc
+                                ) m
+                            
+                                	ON 	m.event_id = f.event_id
+                                   	AND f.team_id = m.team_id
+                                    AND m.competition_division = f.competition_division
+                                    AND m.gender_division = f.gender_division
+                                    AND m.age_division = f.age_division
+                                    
+                            SET f.no_games = m.no_games
+                                	, f.no_wins = m.no_wins
+                                , f.no_losses = m.no_losses
+                                , f.no_draws = m.no_draws
+                                , f.score_for = m.score_for
+                                , f.score_against = m.score_against
+                                , f.score_diff = m.score_diff
+                                , f.spirit_rating = m.spirit_rating
+                                , f.spirit_placement = m.spirit_rank
+                                , f.is_spirit_winner = case when m.spirit_rank = 1 then 1 when m.spirit_rank > 1 then 0 else null end
+                                
+                            WHERE   f.event_id = (SELECT event_id FROM tmp_matches LIMIT 1)
+                                    AND f.gender_division = (SELECT gender_division FROM tmp_matches LIMIT 1)
+                                    AND f.age_division = (SELECT age_division FROM tmp_matches LIMIT 1)
+                                    AND f.competition_division = (SELECT competition_division FROM tmp_matches LIMIT 1)
+                            ;
+                        ''')      
     
             #con.execute('DROP TABLE tmp_results;')    
      
-            db_message = "Success updating table f_matches!"
+            db_message = "Success updating table f_results with f_matches!"
      
     except:
-        db_message = "Fail updating table f_matches!"
+        db_message = "Fail updating table f_results with f_matches!"
      
     print(db_message)
-    """

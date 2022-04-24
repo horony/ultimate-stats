@@ -7,6 +7,42 @@ Created on Fri Apr 15 15:09:58 2022
 """
 
 event_dict = {
+    "euf_inv_2022_open": {
+        "load_now" : 1
+        , "competition": "euf_elite_invite"
+        , "event": "euf_elite_invite_2022"
+        , "round_no": 1
+        , "matchups_page": "https://euf.ultimatecentral.com/e/elite-invite-2022/schedule/division/Open/stage/all/game_type/played?page="
+        , "results_page": "https://euf.ultimatecentral.com/e/elite-invite-2022/standings/division/Open/stage/141127"
+        , "gender_division": "open"
+        , "competition_division": "club"
+        , "age_division": "adult"           
+        , "source_url": "https://euf.ultimatecentral.com/e/elite-invite-2022"
+   },
+   "euf_inv_2022_mixed": {
+        "load_now" : 1
+        , "competition": "euf_elite_invite"
+        , "event": "euf_elite_invite_2022"
+        , "round_no": 1
+        , "matchups_page": "https://euf.ultimatecentral.com/e/elite-invite-2022/schedule/division/Mixed/stage/all/game_type/played?page="
+        , "results_page": "https://euf.ultimatecentral.com/e/elite-invite-2022/standings/stage/141125/division/Mixed"
+        , "gender_division": "mixed"
+        , "competition_division": "club"
+        , "age_division": "adult"           
+        , "source_url": "https://euf.ultimatecentral.com/e/elite-invite-2022"
+   },
+   "euf_inv_2022_women": {
+        "load_now" : 1
+        , "competition": "euf_elite_invite"
+        , "event": "euf_elite_invite_2022"
+        , "round_no": 1
+        , "matchups_page": "https://euf.ultimatecentral.com/e/elite-invite-2022/schedule/division/Women/stage/all/game_type/played?page="
+        , "results_page": "https://euf.ultimatecentral.com/e/elite-invite-2022/standings/stage/141477/division/Women"
+        , "gender_division": "women"
+        , "competition_division": "club"
+        , "age_division": "adult"           
+        , "source_url": "https://euf.ultimatecentral.com/e/elite-invite-2022"
+   },    
    "xeucf_2021_open": {
            "load_now" : 1
            , "competition": "eucf"

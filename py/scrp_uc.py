@@ -78,7 +78,7 @@ from scrp_uc_input_data import event_dict
 
 # interate over dictionary
 for d, di in event_dict.items():
-    time.sleep(30)
+    time.sleep(5)
     print('\n Current dict:', d)
     
     if (di['load_now'] == 1):
@@ -206,7 +206,15 @@ for d, di in event_dict.items():
             
             # check if final page ist found
             active_nav_site = soup.find("ul", {"class": "nav-pager align-left"})
-            active_nav_site = active_nav_site.find("a", {"class": "selected"}).text
+            
+            if active_nav_site is None:
+                print('No Navigationbar found, just scraping 1 site')
+                nav_bar_found = 0
+                active_nav_site = '1'
+            else:
+                print('Navigationbar found, interating sites')
+                nav_bar_found = 1
+                active_nav_site = active_nav_site.find("a", {"class": "selected"}).text                
             
             if int(active_nav_site) != current_page:
                 print("No more matchups found")
@@ -334,8 +342,12 @@ for d, di in event_dict.items():
                                                                                       ])
                     
                     df_matchups = pd.concat([df_matchups, df_current_matchup], sort=True)       
-        
-                current_page = current_page + 1
+                    
+                if nav_bar_found == 1:
+                    current_page = current_page + 1
+                else:
+                    current_page = 0
+                 
         
         
         df_matchups = df_matchups.dropna(subset=['home_team_score', 'away_team_score', 'home_team_id_str', 'away_team_id_str'])
@@ -346,8 +358,6 @@ for d, di in event_dict.items():
         df_matchups['home_team_point_diff'] = df_matchups['home_team_score'] - df_matchups['away_team_score']
         df_matchups['away_team_point_diff'] = df_matchups['away_team_score'] - df_matchups['home_team_score']
         df_matchups['point_diff'] = abs(df_matchups['home_team_point_diff'])
-        #df_matchups['point_diff_factor'] = np.where(df_matchups["home_team_score"] > df_matchups["away_team_score"], df_matchups["home_team_score"], df_matchups["away_team_score"]) / np.where(df_matchups["home_team_score"] < df_matchups["away_team_score"], df_matchups["home_team_score"], df_matchups["away_team_score"])
-        df_matchups['point_diff_factor'] =  None
         
         # was it a universe points point?
         df_matchups.loc[(df_matchups['point_diff'] == 1) & ((df_matchups['home_team_score'] + df_matchups['away_team_score']) == 29), 'is_universe_game'] = 1
@@ -384,6 +394,3 @@ for d, di in event_dict.items():
         
     else:
         print('No scraping command for this dict found')
-    
-    
-
