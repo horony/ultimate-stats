@@ -1,3 +1,6 @@
+<? php
+//do  something
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,6 +28,7 @@
     	<!-- Horizontal Nav -->
 
 		<div id="nav-placeholder-top">
+            <?php include("html/layout-nav-topbar.html"); ?>
 		</div>
 
 
@@ -32,47 +36,19 @@
         <div id="layoutSidenav">
 
             <div id="layoutSidenav_nav">
+                <?php include("html/layout-nav-sidebar.html"); ?>
     		</div>
 
-    		<script>
-    			$(document).ready(function(){
-    				$(function(){
-    			  	  $("#layoutSidenav_nav").load("html/layout-nav-sidebar.html");
-    			    });
-                });
 
-                $(document).ready(function(){
-                    $(function(){
-                      $("#nav-placeholder-top").load("html/layout-nav-topbar.html");
-                    });
-                });        
-            </script>
 
             <!-- Content -->
             <div id="layoutSidenav_content">
 
                 <div id="content">
+                    <?php include("html/content.html"); ?>
                 </div>
-                <script>
-                    $(document).ready(function(){
-                        $(function(){
-                          $("#content").load("html/content.html");
-                        });
-                    });        
-                </script>                
 
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                <?php include("html/layout-footer.html"); ?>
             </div>
         </div>
 
